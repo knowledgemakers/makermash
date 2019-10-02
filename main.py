@@ -270,7 +270,7 @@ class MakerMasher():
         gpio_output = KEY_TO_GPIO[key]
         pressed = True
         self.process_key_down(key)
-        for each in range(0, 5):
+        for each in range(0, 3):
             GPIO.output(gpio_output, True)
             sleep(0.1)
             GPIO.output(gpio_output, False)
