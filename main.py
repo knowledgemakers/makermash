@@ -145,14 +145,15 @@ class MakerMasher():
                 self.correct += 1
                 if self.correct == len(self.target_results):
                     self.win_and_next()
-            else:
-                self.game_over()
+        else:
+            self.game_over()
+
 
     def win_and_next(self):
         self.current_score+=1
         print(self.current_score)
         self.write_text_on_screen("WELL DONE!")
-        pygame.time.set_timer(REST_TIME, 200)
+        pygame.time.set_timer(REST_TIME, 1000)
 
     def reset(self):
         self.in_game = False
