@@ -164,6 +164,8 @@ class MakerMasher():
                 self.correct += 1
                 if self.correct == len(self.target_results):
                     self.win_and_next()
+            else:
+                self.game_over()
         else:
             self.game_over()
 
