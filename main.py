@@ -122,6 +122,7 @@ class MakerMasher():
         return
 
     def gameover_show(self):
+        self.reset_buttons()
         self.button_on("2")
         self.button_on("4")
         self.button_on("5")
