@@ -25,15 +25,15 @@ mem_leds = [26,20,15,6,27,9,11] # currrent working LEDS :(
 buttons = [17,22,12,5,10,13,14,18,21]
 
 NUM_TO_LEDS = {
-    "1": 26,
-    "2": 20,
-    "3": 8,
-    "4": 16,
-    "5": 6,
-    "6": 15,
-    "7": 27,
-    "8": 9,
-    "9": 11
+    "0": 26,
+    "1": 20,
+    "2": 8,
+    "3": 16,
+    "4": 6,
+    "5": 15,
+    "6": 27,
+    "7": 9,
+    "8": 11
 }
 
 global current_file, version
@@ -178,7 +178,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(26, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(13) and not pressed:
@@ -190,7 +191,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(20, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(18) and not pressed:
@@ -202,7 +204,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(8, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(12) and not pressed:
@@ -214,7 +217,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(16, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(5) and not pressed:
@@ -226,7 +230,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(6, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(14) and not pressed:
@@ -238,7 +243,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(15, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(17) and not pressed:
@@ -250,7 +256,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(27, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(10) and not pressed:
@@ -262,7 +269,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(9, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
         if GPIO.input(21) and not pressed:
@@ -274,7 +282,8 @@ class MakerMasher():
                 sleep(0.1)
                 GPIO.output(11, False)
                 sleep(0.1)
-            sleep(0.5)
+            if not self.in_game:
+                sleep(0.5)
             pressed = False
 
 
