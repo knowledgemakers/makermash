@@ -72,6 +72,7 @@ class MakerMasher():
     target_results_iter=None
     in_game=False
     correct=0
+    finish_print=False
 
     def __init__(self, font, screen):
         self.font = font
@@ -102,9 +103,11 @@ class MakerMasher():
         self.flash_button(next(self.target_results_iter))
         now=time.time()
         self.in_game=False
+        self.finish_print=False
         pygame.time.set_timer(UPDATE_NUMBER, 200)
 
     def flash_button(self, val):
+        print("flashing" + val)
         gpio_value= NUM_TO_LEDS[val]
         print("flash button" + str(gpio_value))
         for each in range(0, 2):
@@ -115,6 +118,8 @@ class MakerMasher():
         return
 
     def keep_printing(self):
+        if self.finish_print:
+            return
         print("keep printing")
         next_number = next(self.target_results_iter, None)
         print ("next" + str(next_number))
@@ -125,6 +130,7 @@ class MakerMasher():
             self.in_game = True
             self.target_results_iter = iter(self.target_results)
             print(self.target_results)
+            self.finish_print=True
             pygame.time.set_timer(UPDATE_NUMBER, 0)
 
     def generate_result_based_on_score(self, score):
