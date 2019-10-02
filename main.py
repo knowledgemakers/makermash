@@ -118,7 +118,10 @@ class MakerMasher():
     def generate_result_based_on_score(self, score):
         target= []
         for i in range(score+1):
-            target.append(str(random.randint(0,8)))
+            number = random.randint(1,9)
+            while number == 3:
+                number = random.randint(1, 9)
+            target.append(str(number))
         return target
 
     def process_key_down(self, key):
