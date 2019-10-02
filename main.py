@@ -169,11 +169,13 @@ class MakerMasher():
 
     def generate_result_based_on_score(self, score):
         target= []
+        prev_num=0
         for i in range(score+1):
             number = random.randint(1,9)
-            while number == 3:
+            while number == 3 or number==prev_num:
                 number = random.randint(1, 9)
             target.append(str(number))
+            prev_num=number
         print(target)
         return target
 
@@ -207,7 +209,7 @@ class MakerMasher():
         self.current_score+=1
         print(self.current_score)
         self.write_text_on_screen("WELL DONE!")
-        pygame.time.set_timer(REST_TIME, 1000)
+        pygame.time.set_timer(REST_TIME, 2000)
 
     def reset(self):
         self.in_game = False
