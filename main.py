@@ -90,7 +90,7 @@ class MakerMasher():
         self.flash_button(next(self.target_results_iter))
         now=time.time()
         self.in_game=False
-        pygame.time.set_timer(UPDATE_NUMBER, 1000)
+        pygame.time.set_timer(UPDATE_NUMBER, 200)
 
     def flash_button(self, val):
         gpio_value= NUM_TO_LEDS[val]
@@ -152,7 +152,7 @@ class MakerMasher():
         self.current_score+=1
         print(self.current_score)
         self.write_text_on_screen("WELL DONE!")
-        pygame.time.set_timer(REST_TIME, 1000)
+        pygame.time.set_timer(REST_TIME, 200)
 
     def reset(self):
         self.in_game = False
@@ -279,7 +279,7 @@ class MakerMasher():
         if GPIO.input(21) and not pressed:
             print('Button 9')
             pressed = True
-            self.git(pygame.K_9)
+            self.process_key_down(pygame.K_9)
             for each in range(0, 5):
                 GPIO.output(11, True)
                 sleep(0.1)
