@@ -16,6 +16,27 @@ UPDATE_NUMBER = pygame.USEREVENT+1
 REST_TIME = pygame.USEREVENT+2
 
 
+flash = [26,20,8,15,6,16,27,9,11]
+
+leds = [26,20,8,15,6,16,27,9,11]
+
+mem_leds = [26,20,15,6,27,9,11] # currrent working LEDS :(
+
+buttons = [17,22,12,5,10,13,14,18,21]
+
+global current_file, version
+
+def gpio_setup():
+    global pressed
+    GPIO.setmode(GPIO.BCM)
+    for each in buttons:
+        GPIO.setup(each, GPIO.IN, GPIO.PUD_DOWN)
+
+    for each in leds:
+        GPIO.setup(each, GPIO.OUT)
+    pressed = False
+
+
 class MakerMasher():
     BLINK_EVENT = pygame.USEREVENT + 0
     screen=None
@@ -239,6 +260,7 @@ class MakerMasher():
 
 
 def main():
+    gpio_setup()
     pygame.init()
     try:
 
