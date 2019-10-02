@@ -94,7 +94,7 @@ class MakerMasher():
 
     def flash_button(self, val):
         gpio_value= NUM_TO_LEDS[val]
-
+        print("flash button" + str(gpio_value))
         for each in range(0, 2):
             GPIO.output(gpio_value, True)
             sleep(0.1)
@@ -107,7 +107,7 @@ class MakerMasher():
         next_number = next(self.target_results_iter, None)
         print ("next" + str(next_number))
         if next_number:
-            self.write_text_on_screen(next_number)
+            self.flash_button(next_number)
         else:
             self.write_text_on_screen("GO!")
             self.in_game = True
