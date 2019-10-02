@@ -153,7 +153,7 @@ class MakerMasher():
                 print('Button 1')
 
                 pressed = True
-                self.process_key_down('1')
+                self.process_key_down(pygame.K_1)
                 for each in range(0, 5):
                     GPIO.output(26, True)
                     sleep(0.1)
@@ -165,7 +165,7 @@ class MakerMasher():
             if GPIO.input(13) and not pressed:
                 print('Button 2')
                 pressed = True
-                self.process_key_down('2')
+                self.process_key_down(pygame.K_2)
                 for each in range(0, 5):
                     GPIO.output(20, True)
                     sleep(0.1)
@@ -177,7 +177,7 @@ class MakerMasher():
             if GPIO.input(18) and not pressed:
                 print('Button 3')
                 pressed = True
-                self.process_key_down('3')
+                self.process_key_down(pygame.K_3)
                 for each in range(0, 5):
                     GPIO.output(8, True)
                     sleep(0.1)
@@ -189,7 +189,7 @@ class MakerMasher():
             if GPIO.input(12) and not pressed:
                 print('Button 4')
                 pressed = True
-                self.process_key_down('4')
+                self.process_key_down(pygame.K_4)
                 for each in range(0, 5):
                     GPIO.output(16, True)
                     sleep(0.1)
@@ -201,7 +201,7 @@ class MakerMasher():
             if GPIO.input(5) and not pressed:
                 print('Button 5')
                 pressed = True
-                self.process_key_down('5')
+                self.process_key_down(pygame.K_5)
                 for each in range(0, 5):
                     GPIO.output(6, True)
                     sleep(0.1)
@@ -213,7 +213,7 @@ class MakerMasher():
             if GPIO.input(14) and not pressed:
                 print('Button 6')
                 pressed = True
-                self.process_key_down('6')
+                self.process_key_down(pygame.K_6)
                 for each in range(0, 5):
                     GPIO.output(15, True)
                     sleep(0.1)
@@ -225,7 +225,7 @@ class MakerMasher():
             if GPIO.input(17) and not pressed:
                 print('Button 7')
                 pressed = True
-                self.process_key_down('7')
+                self.process_key_down(pygame.K_7)
                 for each in range(0, 5):
                     GPIO.output(27, True)
                     sleep(0.1)
@@ -237,7 +237,7 @@ class MakerMasher():
             if GPIO.input(10) and not pressed:
                 print('Button 8')
                 pressed = True
-                self.process_key_down('8')
+                self.process_key_down(pygame.K_8)
                 for each in range(0, 5):
                     GPIO.output(9, True)
                     sleep(0.1)
@@ -249,7 +249,7 @@ class MakerMasher():
             if GPIO.input(21) and not pressed:
                 print('Button 9')
                 pressed = True
-                self.process_key_down('9')
+                self.process_key_down(pygame.K_9)
                 for each in range(0, 5):
                     GPIO.output(11, True)
                     sleep(0.1)
