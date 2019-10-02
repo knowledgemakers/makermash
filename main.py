@@ -96,6 +96,7 @@ class MakerMasher():
 
     def start_game(self):
         pygame.time.set_timer(REST_TIME, 0)
+        self.reset_buttons()
         self.correct=0
         self.in_game = False
         self.target_results = self.generate_result_based_on_score(self.current_score)
@@ -105,6 +106,39 @@ class MakerMasher():
         self.in_game=False
         self.finish_print=False
         pygame.time.set_timer(UPDATE_NUMBER, 200)
+
+    def button_on(self, val):
+        print("flashing" + val)
+        gpio_value = NUM_TO_LEDS[val]
+        print("flash button" + str(gpio_value))
+        GPIO.output(gpio_value, True)
+        return
+
+    def button_off(self, val):
+        print("flashing" + val)
+        gpio_value = NUM_TO_LEDS[val]
+        print("flash button" + str(gpio_value))
+        GPIO.output(gpio_value, False)
+        return
+
+    def gameover_show(self):
+        self.button_on("2")
+        self.button_on("4")
+        self.button_on("5")
+        self.button_on("6")
+        self.button_on("8")
+
+    def reset_buttons(self):
+        self.button_off("1")
+        self.button_off("2")
+        self.button_off("3")
+        self.button_off("4")
+        self.button_off("5")
+        self.button_off("6")
+        self.button_off("7")
+        self.button_off("8")
+        self.button_off("9")
+
 
     def flash_button(self, val):
         print("flashing" + val)
@@ -169,7 +203,6 @@ class MakerMasher():
         else:
             self.game_over()
 
-
     def win_and_next(self):
         self.current_score+=1
         print(self.current_score)
@@ -183,6 +216,7 @@ class MakerMasher():
 
     def game_over(self):
         self.write_text_on_screen("GAME OVER!\nYOUR SCORE: {}".format(self.current_score))
+        self.gameover_show()
         self.reset()
 
     def process_gpio_buttons(self):
