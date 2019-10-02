@@ -24,6 +24,18 @@ mem_leds = [26,20,15,6,27,9,11] # currrent working LEDS :(
 
 buttons = [17,22,12,5,10,13,14,18,21]
 
+NUM_TO_LEDS = {
+    1: 26
+    2: 20
+    3: 8
+    4: 16
+    5: 6
+    6: 15
+    7: 27
+    8: 9
+    9: 11
+}
+
 global current_file, version
 
 def gpio_setup():
@@ -75,11 +87,20 @@ class MakerMasher():
         self.in_game = False
         self.target_results = self.generate_result_based_on_score(self.current_score)
         self.target_results_iter = iter(self.target_results)
-        self.write_text_on_screen(next(self.target_results_iter))
+        self.flash_button(next(self.target_results_iter))
         now=time.time()
         self.in_game=False
         pygame.time.set_timer(UPDATE_NUMBER, 1000)
 
+    def flash_button(self, val):
+        gpio_value= NUM_TO_LEDS[val]
+
+        for each in range(0, 2):
+            GPIO.output(gpio_value, True)
+            sleep(0.1)
+            GPIO.output(gpio_value, False)
+            sleep(0.1)
+        return
 
     def keep_printing(self):
         print("keep printing")
