@@ -141,122 +141,120 @@ class MakerMasher():
 
     def process_gpio_buttons(self):
         global pressed
-        while True:
-            if GPIO.input(21) and GPIO.input(22) and not pressed:
-                pressed = True
+        if GPIO.input(21) and GPIO.input(22) and not pressed:
+            pressed = True
+            GPIO.output(26, True)
+            GPIO.output(11, True)
+            sleep(2)
+
+        if GPIO.input(22) and not pressed:
+            print('Button 1')
+
+            pressed = True
+            self.process_key_down(pygame.K_1)
+            for each in range(0, 5):
                 GPIO.output(26, True)
+                sleep(0.1)
+                GPIO.output(26, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(13) and not pressed:
+            print('Button 2')
+            pressed = True
+            self.process_key_down(pygame.K_2)
+            for each in range(0, 5):
+                GPIO.output(20, True)
+                sleep(0.1)
+                GPIO.output(20, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(18) and not pressed:
+            print('Button 3')
+            pressed = True
+            self.process_key_down(pygame.K_3)
+            for each in range(0, 5):
+                GPIO.output(8, True)
+                sleep(0.1)
+                GPIO.output(8, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(12) and not pressed:
+            print('Button 4')
+            pressed = True
+            self.process_key_down(pygame.K_4)
+            for each in range(0, 5):
+                GPIO.output(16, True)
+                sleep(0.1)
+                GPIO.output(16, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(5) and not pressed:
+            print('Button 5')
+            pressed = True
+            self.process_key_down(pygame.K_5)
+            for each in range(0, 5):
+                GPIO.output(6, True)
+                sleep(0.1)
+                GPIO.output(6, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(14) and not pressed:
+            print('Button 6')
+            pressed = True
+            self.process_key_down(pygame.K_6)
+            for each in range(0, 5):
+                GPIO.output(15, True)
+                sleep(0.1)
+                GPIO.output(15, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(17) and not pressed:
+            print('Button 7')
+            pressed = True
+            self.process_key_down(pygame.K_7)
+            for each in range(0, 5):
+                GPIO.output(27, True)
+                sleep(0.1)
+                GPIO.output(27, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(10) and not pressed:
+            print('Button 8')
+            pressed = True
+            self.process_key_down(pygame.K_8)
+            for each in range(0, 5):
+                GPIO.output(9, True)
+                sleep(0.1)
+                GPIO.output(9, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
+
+        if GPIO.input(21) and not pressed:
+            print('Button 9')
+            pressed = True
+            self.git(pygame.K_9)
+            for each in range(0, 5):
                 GPIO.output(11, True)
-                sleep(2)
-                start_new_file()
-
-            if GPIO.input(22) and not pressed:
-                print('Button 1')
-
-                pressed = True
-                self.process_key_down(pygame.K_1)
-                for each in range(0, 5):
-                    GPIO.output(26, True)
-                    sleep(0.1)
-                    GPIO.output(26, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(13) and not pressed:
-                print('Button 2')
-                pressed = True
-                self.process_key_down(pygame.K_2)
-                for each in range(0, 5):
-                    GPIO.output(20, True)
-                    sleep(0.1)
-                    GPIO.output(20, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(18) and not pressed:
-                print('Button 3')
-                pressed = True
-                self.process_key_down(pygame.K_3)
-                for each in range(0, 5):
-                    GPIO.output(8, True)
-                    sleep(0.1)
-                    GPIO.output(8, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(12) and not pressed:
-                print('Button 4')
-                pressed = True
-                self.process_key_down(pygame.K_4)
-                for each in range(0, 5):
-                    GPIO.output(16, True)
-                    sleep(0.1)
-                    GPIO.output(16, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(5) and not pressed:
-                print('Button 5')
-                pressed = True
-                self.process_key_down(pygame.K_5)
-                for each in range(0, 5):
-                    GPIO.output(6, True)
-                    sleep(0.1)
-                    GPIO.output(6, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(14) and not pressed:
-                print('Button 6')
-                pressed = True
-                self.process_key_down(pygame.K_6)
-                for each in range(0, 5):
-                    GPIO.output(15, True)
-                    sleep(0.1)
-                    GPIO.output(15, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(17) and not pressed:
-                print('Button 7')
-                pressed = True
-                self.process_key_down(pygame.K_7)
-                for each in range(0, 5):
-                    GPIO.output(27, True)
-                    sleep(0.1)
-                    GPIO.output(27, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(10) and not pressed:
-                print('Button 8')
-                pressed = True
-                self.process_key_down(pygame.K_8)
-                for each in range(0, 5):
-                    GPIO.output(9, True)
-                    sleep(0.1)
-                    GPIO.output(9, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
-
-            if GPIO.input(21) and not pressed:
-                print('Button 9')
-                pressed = True
-                self.process_key_down(pygame.K_9)
-                for each in range(0, 5):
-                    GPIO.output(11, True)
-                    sleep(0.1)
-                    GPIO.output(11, False)
-                    sleep(0.1)
-                sleep(0.5)
-                pressed = False
+                sleep(0.1)
+                GPIO.output(11, False)
+                sleep(0.1)
+            sleep(0.5)
+            pressed = False
 
 
 def main():
