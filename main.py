@@ -147,7 +147,7 @@ class MakerMasher():
     def flash_button(self, val):
         print("flashing" + val)
         gpio_value= NUM_TO_LEDS[val]
-        self.music.play(int(val))
+        self.music.play(int(val) - 48)
 
         print("flash button" + str(gpio_value))
         for each in range(0, 2):
@@ -202,7 +202,6 @@ class MakerMasher():
 
         next_number = next(self.target_results_iter, None)
         print("is key {} the same as {}".format(key, next_number))
-        self.music.play(self.correct)
 
         if next_number:
             if next_number==key:
@@ -280,6 +279,7 @@ class MakerMasher():
         global pressed
         gpio_output = KEY_TO_GPIO[key]
         pressed = True
+        self.music.play(key)
         self.process_key_down(key)
         for each in range(0, 1):
             GPIO.output(gpio_output, True)
