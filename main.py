@@ -239,8 +239,9 @@ class MakerMasher():
             pressed = True
             GPIO.output(26, True)
             GPIO.output(11, True)
+            pygame.display.quit()
             pygame.quit()
-            sleep(2)
+            exit()
 
         if GPIO.input(22) and not pressed:
             print('Button 1')
