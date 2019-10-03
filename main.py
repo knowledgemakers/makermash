@@ -291,6 +291,17 @@ def main():
     pygame.init()
     pygame.midi.init()
 
+    for id in range(pygame.midi.get_count()):
+        print(pygame.midi.get_device_info(id))
+    midiOutput = pygame.midi.Output(0, 0)
+    midiOutput.set_instrument(0)
+    for note in range(0, 127):
+        midiOutput.note_on(74, 127)
+        sleep(.25)
+        midiOutput.note_off(74, 127)
+    del midiOutput
+
+
     try:
 
         clock = pygame.time.Clock()
