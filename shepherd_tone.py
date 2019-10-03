@@ -55,7 +55,7 @@ class ShepherdMusic:
         player.play()
 
     def play_gameover(self):
-        player = player = pygame.midi.Output(2)
+        player = pygame.midi.Output(2)
         player.note_on(64, 127)
         sleep(1)
         player.note_off(64, 127)
