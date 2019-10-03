@@ -8,6 +8,8 @@ import time
 import RPi.GPIO as GPIO
 from time import sleep
 from shepherd_tone import ShepherdMusic
+import pygame.midi
+
 
 
 VISITOR_TTF_FILENAME = 'fonts/monopixies.ttf'
@@ -287,6 +289,8 @@ class MakerMasher():
 def main():
     gpio_setup()
     pygame.init()
+    pygame.midi.init()
+
     try:
 
         clock = pygame.time.Clock()
