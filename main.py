@@ -146,7 +146,7 @@ class MakerMasher():
         print("flashing" + val)
         gpio_value= NUM_TO_LEDS[val]
         print("flash button" + str(gpio_value))
-        for each in range(0, 1):
+        for each in range(0, 2):
             GPIO.output(gpio_value, True)
             sleep(0.1)
             GPIO.output(gpio_value, False)
@@ -274,7 +274,7 @@ class MakerMasher():
         gpio_output = KEY_TO_GPIO[key]
         pressed = True
         self.process_key_down(key)
-        for each in range(0, 3):
+        for each in range(0, 1):
             GPIO.output(gpio_output, True)
             sleep(0.1)
             GPIO.output(gpio_output, False)
