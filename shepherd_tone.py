@@ -2,9 +2,10 @@ import os
 from music21 import stream, instrument
 from music21.note import Note
 from music21.midi.realtime import StreamPlayer
+import pygame.midi
+from time import sleep
 
-print(os.getcwd())
-os.chdir('.')  # set working directory
+
 
 class ShepherdMusic:
     volume_increment_u=0
@@ -12,7 +13,7 @@ class ShepherdMusic:
     def sheperd_tone(self, notes_i):
         loop = 1
         length = 0.5
-        intrument_to_play = instrument.ReedOrgan()
+        intrument_to_play = instrument.Piano()
         # Highest octave, volume gets lower
         shepard_tone_u = stream.Part()
         shepard_tone_u.insert(0, intrument_to_play)
@@ -53,5 +54,18 @@ class ShepherdMusic:
         player = StreamPlayer(self.sheperd_tone(i))
         player.play()
 
+    def play_gameover(self):
+        player = player = pygame.midi.Output(2)
+        player.note_on(64, 127)
+        sleep(1)
+        player.note_off(64, 127)
 
+
+
+pygame.midi.init()
+print("aaa")
+for id in range(pygame.midi.get_count()):
+  print (pygame.midi.get_device_info(id))
+
+ShepherdMusic().play(0)
 

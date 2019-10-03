@@ -147,6 +147,8 @@ class MakerMasher():
     def flash_button(self, val):
         print("flashing" + val)
         gpio_value= NUM_TO_LEDS[val]
+        self.music.play(self.val)
+
         print("flash button" + str(gpio_value))
         for each in range(0, 2):
             GPIO.output(gpio_value, True)
@@ -169,6 +171,7 @@ class MakerMasher():
             self.target_results_iter = iter(self.target_results)
             print(self.target_results)
             self.finish_print=True
+            self.music=ShepherdMusic()
             pygame.time.set_timer(UPDATE_NUMBER, 0)
 
     def generate_result_based_on_score(self, score):
@@ -224,7 +227,9 @@ class MakerMasher():
 
     def game_over(self):
         self.write_text_on_screen("GAME OVER!\nYOUR SCORE: {}".format(self.current_score))
+        self.music.play_gameover()
         self.gameover_show()
+
         self.reset()
 
     def process_gpio_buttons(self):
