@@ -79,6 +79,7 @@ class MakerMasher():
         self.screen=screen
         self.screen_rect=screen.get_rect()
         self.off_text_surface = pygame.Surface(self.screen_rect.size)
+        self.music = ShepherdMusic()
 
     def write_text_on_screen(self, text):
         self.screen.blit(self.off_text_surface, self.screen_rect)
@@ -196,6 +197,8 @@ class MakerMasher():
 
         next_number = next(self.target_results_iter, None)
         print("is key {} the same as {}".format(key, next_number))
+        self.music.play(self.correct)
+
         if next_number:
             if next_number==key:
                 self.correct += 1
