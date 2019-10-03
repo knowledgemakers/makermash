@@ -291,15 +291,14 @@ def main():
     pygame.init()
     pygame.midi.init()
 
-    for id in range(pygame.midi.get_count()):
-        print(pygame.midi.get_device_info(id))
-    midiOutput = pygame.midi.Output(0, 0)
-    midiOutput.set_instrument(0)
-    for note in range(0, 127):
-        midiOutput.note_on(74, 127)
-        sleep(.25)
-        midiOutput.note_off(74, 127)
-    del midiOutput
+    pygame.midi.init()
+    player = pygame.midi.Output(0)
+    player.set_instrument(0)
+    player.note_on(64, 127)
+    time.sleep(1)
+    player.note_off(64, 127)
+    del player
+    pygame.midi.quit()
 
 
     try:
