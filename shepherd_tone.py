@@ -55,6 +55,7 @@ class ShepherdMusic:
 
     def play_gameover(self):
         player = StreamPlayer(self.sheperd_tone(0, 1))
+        player.play()
 
 
 
