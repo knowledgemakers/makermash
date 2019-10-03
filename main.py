@@ -77,9 +77,11 @@ class MakerMasher():
     finish_print=False
 
     def __init__(self, font, screen):
+
         self.font = font
         self.screen=screen
         self.screen_rect=screen.get_rect()
+        pygame.display.toggle_fullscreen()
         self.off_text_surface = pygame.Surface(self.screen_rect.size)
         self.music = ShepherdMusic()
 
@@ -108,7 +110,7 @@ class MakerMasher():
         now=time.time()
         self.in_game=False
         self.finish_print=False
-        pygame.time.set_timer(UPDATE_NUMBER, 200)
+        pygame.time.set_timer(UPDATE_NUMBER, 100)
 
     def button_on(self, val):
         print("flashing" + val)
@@ -216,7 +218,7 @@ class MakerMasher():
     def win_and_next(self):
         self.current_score+=1
         print(self.current_score)
-        self.write_text_on_screen("WELL DONE!")
+        self.write_text_on_screen("WELL DONE!\nGET READY...")
         pygame.time.set_timer(REST_TIME, 2000)
 
     def reset(self):
@@ -237,6 +239,7 @@ class MakerMasher():
             pressed = True
             GPIO.output(26, True)
             GPIO.output(11, True)
+            pygame.quit()
             sleep(2)
 
         if GPIO.input(22) and not pressed:
