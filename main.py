@@ -147,7 +147,7 @@ class MakerMasher():
     def flash_button(self, val):
         print("flashing" + val)
         gpio_value= NUM_TO_LEDS[val]
-        self.music.play(val)
+        self.music.play(int(val))
 
         print("flash button" + str(gpio_value))
         for each in range(0, 2):
