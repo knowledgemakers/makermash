@@ -55,8 +55,3 @@ class ShepherdMusic:
 
 
 
-music = ShepherdMusic()
-
-
-for l in range(100):
-    music.playTune(l)

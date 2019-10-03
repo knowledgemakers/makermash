@@ -7,7 +7,7 @@ import random
 import time
 import RPi.GPIO as GPIO
 from time import sleep
-
+from shepherd_tone import ShepherdMusic
 
 
 VISITOR_TTF_FILENAME = 'fonts/monopixies.ttf'
