@@ -10,9 +10,8 @@ from time import sleep
 class ShepherdMusic:
     volume_increment_u=0
     volume_increment_d=0
-    def sheperd_tone(self, notes_i):
-        loop = 1
-        length = 0.5
+    def sheperd_tone(self, notes_i, length=0.5):
+
         intrument_to_play = instrument.Piano()
         # Highest octave, volume gets lower
         shepard_tone_u = stream.Part()
@@ -55,10 +54,8 @@ class ShepherdMusic:
         player.play()
 
     def play_gameover(self):
-        player = pygame.midi.Output(2)
-        player.note_on(64, 127)
-        sleep(1)
-        player.note_off(64, 127)
+        player = StreamPlayer(self.sheperd_tone(i, 1))
+
 
 
 
