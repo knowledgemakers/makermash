@@ -105,16 +105,17 @@ class MakerMasher():
         print(self.off_text_surface)
         self.screen.fill((0, 0, 0))
         text_lines = text.split("\n")
-        lines=0
+        lines = 0
         for line in text_lines:
             on_text_surface = self.font.render(
                 line, True, pygame.Color('green3')
             )
             blink_rect = on_text_surface.get_rect()
             blink_rect.center = self.screen_rect.center
-            if len(text_lines)>6:
+            if len(text_lines) > 6:
                 blink_rect.centery = blink_rect.centery + 50 * lines - (50 * (len(text_lines) - 6))
-
+            else:
+                blink_rect.centery = blink_rect.centery + 50 * lines
             self.screen.blit(on_text_surface, blink_rect)
             lines += 1
 
