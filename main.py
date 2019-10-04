@@ -204,11 +204,12 @@ class MakerMasher():
             self.music = ShepherdMusic()
 
     def generate_result_based_on_score(self, score):
+
         target= []
         prev_num=0
         for i in range(score+1):
             number = random.randint(1,9)
-            while number == 3 or number==prev_num:
+            while number == 3 or number==prev_num or (score<=4 and number==5):
                 number = random.randint(1, 9)
             target.append(str(number))
             prev_num=number
