@@ -176,7 +176,7 @@ class MakerMasher():
     def flash_button(self, val):
         print("flashing" + val)
         gpio_value= NUM_TO_LEDS[val]
-        self.music.play(int(val) - 48)
+        self.music.play(int(val))
 
         print("flash button" + str(gpio_value))
         for each in range(0, 2):
@@ -254,7 +254,6 @@ class MakerMasher():
 
     def win_and_next(self):
         self.current_score+=1
-        print(self.current_score)
         self.write_text_on_screen("WELL DONE! \n GET READY...")
         pygame.time.wait(1000)
         pygame.time.set_timer(REST_TIME, 2000)
