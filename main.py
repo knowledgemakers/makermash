@@ -84,7 +84,7 @@ class MakerMasher():
 
         self.font = font
         self.screen=screen
-        pygame.display.toggle_fullscreen()
+
 
         self.screen_rect=screen.get_rect()
         self.off_rect = self.screen_rect.copy()
@@ -350,7 +350,8 @@ def main():
     try:
 
         clock = pygame.time.Clock()
-        screen = pygame.display.set_mode((800, 600))
+        pygame.display.toggle_fullscreen()
+        screen = pygame.display()
         font = pygame.font.Font(VISITOR_TTF_FILENAME, 50)
         masher = MakerMasher(font, screen)
 
