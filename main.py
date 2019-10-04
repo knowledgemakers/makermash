@@ -271,7 +271,7 @@ class MakerMasher():
         if self.leaderboard.is_highscore(self.current_score):
             self.get_player_name()
         else:
-            self.write_text_on_screen("GAME OVER!\nYOUR SCORE: {} \n  PRESS THE CENTRAL BUTTON TO START".format(self.current_score) + "\n" + self.leaderboard.get_highscore_string())
+            self.write_text_on_screen("GAME OVER!\nYOUR SCORE: {} \n  PRESS CENTRAL BUTTON TO START".format(self.current_score) + "\n" + self.leaderboard.get_highscore_string())
             self.leaderboard.write("na", self.current_score)
             self.reset()
         self.music.play_gameover()
@@ -286,7 +286,7 @@ class MakerMasher():
 
     def finish_player_name(self):
         self.leaderboard.write(self.player_name, self.current_score)
-        self.write_text_on_screen("AWESOME! \n PRESS THE CENTRAL BUTTON TO START AGAIN " + self.leaderboard.get_highscore_string())
+        self.write_text_on_screen("AWESOME! \n PRESS CENTRAL BUTTON TO START AGAIN " + self.leaderboard.get_highscore_string())
         self.player_name = ""
         self.reset()
 
