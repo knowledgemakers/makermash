@@ -181,13 +181,13 @@ class MakerMasher():
         if next_number:
             self.flash_button(next_number)
         else:
+            pygame.time.set_timer(UPDATE_NUMBER, 0)
             self.write_text_on_screen("GO!")
             self.in_game = True
             self.target_results_iter = iter(self.target_results)
-            print(self.target_results)
+            print("target result" + self.target_results)
             self.finish_print=True
-            self.music=ShepherdMusic()
-            pygame.time.set_timer(UPDATE_NUMBER, 0)
+            self.music = ShepherdMusic()
 
     def generate_result_based_on_score(self, score):
         target= []
@@ -300,6 +300,7 @@ class MakerMasher():
         if GPIO.input(5) and not pressed:
             print('Button 5')
             if not self.in_game:
+                print("start game?")
                 self.start_game()
             self.process_flashy_press(pygame.K_5)
 
