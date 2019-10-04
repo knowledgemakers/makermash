@@ -101,6 +101,7 @@ class MakerMasher():
         self.reset_buttons()
 
     def write_text_on_screen(self, text):
+        print(self.off_rect)
         self.screen.blit(self.off_text_surface, self.off_rect)
         text_lines = text.split("\n")
         lines=0
@@ -260,6 +261,7 @@ class MakerMasher():
 
 
 
+
     def get_player_name(self):
         self.write_text_on_screen("YOU MADE IT TO THE TOP 5! \n ENTER YOUR INITIALS!")
         self.read_input = True
@@ -299,9 +301,9 @@ class MakerMasher():
 
         if GPIO.input(5) and not pressed:
             print('Button 5')
-            #if not self.in_game:
-             #   print("start game?")
-              #  self.start_game()
+            if self.correct == 0:
+                print("start game?")
+                self.start_game()
             self.process_flashy_press(pygame.K_5)
 
         if GPIO.input(14) and not pressed:
