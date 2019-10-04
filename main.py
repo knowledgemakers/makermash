@@ -177,7 +177,7 @@ class MakerMasher():
             return
         print("keep printing")
         next_number = next(self.target_results_iter, None)
-        print ("next" + str(next_number))
+        print ("next " + str(next_number))
         if next_number:
             self.flash_button(next_number)
         else:
@@ -185,7 +185,7 @@ class MakerMasher():
             self.write_text_on_screen("GO!")
             self.in_game = True
             self.target_results_iter = iter(self.target_results)
-            print("target result" + self.target_results)
+            print("target result" + str(self.target_results))
             self.finish_print=True
             self.music = ShepherdMusic()
 
