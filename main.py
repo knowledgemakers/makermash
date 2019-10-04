@@ -124,6 +124,7 @@ class MakerMasher():
         now=time.time()
         self.in_game=False
         self.finish_print=False
+        self.write_text_on_screen("GET READY...")
         pygame.time.set_timer(UPDATE_NUMBER, 100)
 
     def button_on(self, val):
@@ -324,7 +325,7 @@ class MakerMasher():
         global pressed
         gpio_output = KEY_TO_GPIO[key]
         pressed = True
-        self.music.play(key)
+        self.music.play(int(key) - 48)
         self.process_key_down(key)
         for each in range(0, 1):
             GPIO.output(gpio_output, True)

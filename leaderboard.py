@@ -43,7 +43,7 @@ class Leaderboard:
 
 
     def is_highscore(self, score):
-        return int(score) >= int(self.top5score)
+        return int(score) > int(self.top5score)
 
     def get_highscore_string(self):
         highscore_table = "---HIGHSCORE---\n"
@@ -57,15 +57,6 @@ class Leaderboard:
 
 
 
-leader = Leaderboard()
-leader.write("p1", 1)
-leader.write("p2", 2)
-
-print(leader.get_highscore_string())
-
-leader.write("p3", 5)
-
-print(leader.get_highscore_string())
 
 
 
