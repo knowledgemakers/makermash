@@ -220,7 +220,7 @@ class MakerMasher():
         return
 
     def process_input_letter(self, letter):
-        self.player_name+=letter
+        self.player_name += letter.upper()
         self.write_text_on_screen(self.player_name + "_")
 
     def check_response(self, key):
