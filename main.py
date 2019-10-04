@@ -84,22 +84,23 @@ class MakerMasher():
 
         self.font = font
         self.screen=screen
-        self.screen_rect=screen.get_rect()
         pygame.display.toggle_fullscreen()
-        self.off_rect = self.screen_rect
+
+        self.screen_rect=screen.get_rect()
+        self.off_rect = self.screen_rect.copy()
         self.off_rect.height=self.screen_rect.height - 500
         self.off_text_surface = pygame.Surface(self.screen_rect.size)
         logos = pygame.image.load("img/kmakers.png")
         image_rect = logos.get_rect()
-        image_rect.center= self.screen_rect.center
-        image_rect.centery=image_rect.centery+500
+        image_rect.y=self.screen_rect.width-210
+        image_rect.x=self.screen_rect.height - 100
         self.screen.blit(logos, image_rect)
         self.music = ShepherdMusic()
         self.leaderboard = Leaderboard()
 
     def write_text_on_screen(self, text):
         print(self.screen_rect)
-        self.screen.blit(self.off_text_surface, self.screen_rect)
+        self.screen.blit(self.off_text_surface, self.off_rect)
         text_lines = text.split("\n")
         lines=0
         for line in text_lines:
