@@ -120,27 +120,23 @@ class MakerMasher():
         pygame.time.set_timer(REST_TIME, 0)
         self.reset_buttons()
         self.write_text_on_screen("GET READY...")
-        sleep(2)
         self.correct=0
         self.in_game = False
+        pygame.display.flip()
+        sleep(2)
         self.target_results = self.generate_result_based_on_score(self.current_score)
         self.target_results_iter = iter(self.target_results)
         self.flash_button(next(self.target_results_iter))
-        self.in_game=False
         self.finish_print=False
         pygame.time.set_timer(UPDATE_NUMBER, 100)
 
     def button_on(self, val):
-        print("flashing" + val)
         gpio_value = NUM_TO_LEDS[val]
-        print("flash button" + str(gpio_value))
         GPIO.output(gpio_value, True)
         return
 
     def button_off(self, val):
-        print("flashing" + val)
         gpio_value = NUM_TO_LEDS[val]
-        print("flash button" + str(gpio_value))
         GPIO.output(gpio_value, False)
         return
 
