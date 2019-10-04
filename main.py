@@ -234,7 +234,7 @@ class MakerMasher():
         return
 
     def process_input_letter(self, letter):
-        if len.player_name==3:
+        if len(self.player_name)==3:
             self.finish_player_name()
         self.player_name += letter.upper()
         self.write_text_on_screen(self.player_name + "_")
