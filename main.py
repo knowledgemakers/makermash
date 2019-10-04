@@ -123,7 +123,6 @@ class MakerMasher():
         self.correct=0
         self.in_game = False
         pygame.display.flip()
-        sleep(2)
         self.target_results = self.generate_result_based_on_score(self.current_score)
         self.target_results_iter = iter(self.target_results)
         self.flash_button(next(self.target_results_iter))
@@ -360,7 +359,7 @@ def main():
         font = pygame.font.Font(VISITOR_TTF_FILENAME, 50)
         masher = MakerMasher(font, screen)
 
-        masher.write_text_on_screen("Press Any key")
+        masher.write_text_on_screen("PUSH CENTRAL BUTTON")
 
         while True:
             for event in pygame.event.get():
