@@ -121,6 +121,7 @@ class MakerMasher():
     def start_game(self):
         pygame.time.set_timer(REST_TIME, 0)
         self.reset_buttons()
+        self.screen.fill((0, 0, 0))
         self.write_text_on_screen("GET READY...")
         self.correct=0
         self.in_game = False
