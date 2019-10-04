@@ -49,6 +49,7 @@ class ShepherdMusic:
         return stream.Stream([shepard_tone_u, shepard_tone_m, shepard_tone_l])
 
     def play(self, i):
+        print("play "+int(i))
         player = StreamPlayer(self.sheperd_tone(i))
         player.play()
 
