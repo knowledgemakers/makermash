@@ -103,6 +103,7 @@ class MakerMasher():
     def write_text_on_screen(self, text):
         print(self.off_rect)
         self.screen.blit(self.off_text_surface, self.off_rect)
+        pygame.display.flip()
         text_lines = text.split("\n")
         lines=0
         for line in text_lines:
@@ -301,7 +302,7 @@ class MakerMasher():
 
         if GPIO.input(5) and not pressed:
             print('Button 5')
-            if self.correct == 0:
+            if not self.in_game:
                 print("start game?")
                 self.start_game()
             self.process_flashy_press(pygame.K_5)
