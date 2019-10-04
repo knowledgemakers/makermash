@@ -92,8 +92,9 @@ class MakerMasher():
         self.off_text_surface = pygame.Surface(self.screen_rect.size)
         logos = pygame.image.load("img/kmakers.png")
         image_rect = logos.get_rect()
-        image_rect.y=self.screen_rect.width-210
-        image_rect.x=self.screen_rect.height - 100
+        image_rect.y = self.screen_rect.height-210
+        image_rect.x = self.screen_rect.width - 100
+        print(image_rect)
         self.screen.blit(logos, image_rect)
         self.music = ShepherdMusic()
         self.leaderboard = Leaderboard()
