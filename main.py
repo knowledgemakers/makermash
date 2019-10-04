@@ -109,13 +109,17 @@ class MakerMasher():
             )
             blink_rect = on_text_surface.get_rect()
             blink_rect.center = self.screen_rect.center
-            blink_rect.centery = blink_rect.centery+50*lines
+            if len(text_lines)>6:
+                blink_rect.centery = blink_rect.centery + 50 * lines - (50 * (len(text_lines) - 6))
+
             self.screen.blit(on_text_surface, blink_rect)
             lines += 1
 
     def start_game(self):
         pygame.time.set_timer(REST_TIME, 0)
         self.reset_buttons()
+        self.write_text_on_screen("GET READY...")
+        sleep(0.5)
         self.correct=0
         self.in_game = False
         self.target_results = self.generate_result_based_on_score(self.current_score)
@@ -124,7 +128,6 @@ class MakerMasher():
         now=time.time()
         self.in_game=False
         self.finish_print=False
-        self.write_text_on_screen("GET READY...")
         pygame.time.set_timer(UPDATE_NUMBER, 100)
 
     def button_on(self, val):

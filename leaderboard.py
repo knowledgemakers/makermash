@@ -46,7 +46,7 @@ class Leaderboard:
         return int(score) > int(self.top5score)
 
     def get_highscore_string(self):
-        highscore_table = "---HIGHSCORE---\n"
+        highscore_table = "\n---HIGHSCORE---\n"
         for high in self.highscorers:
             highscore_table += (high["date"] + "     " + high["name"] + "     " + str(high["score"]) + "\n")
         return highscore_table
