@@ -103,7 +103,6 @@ class MakerMasher():
     def write_text_on_screen(self, text):
         print(self.off_rect)
         print(self.off_text_surface)
-        self.screen.fill((0, 0, 0))
         text_lines = text.split("\n")
         lines = 0
         for line in text_lines:
