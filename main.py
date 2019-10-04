@@ -93,8 +93,8 @@ class MakerMasher():
         print(self.off_rect)
         logos = pygame.image.load("img/kmakers.png")
         image_rect = logos.get_rect()
-        image_rect.y = self.screen_rect.height-60
-        image_rect.x = self.screen_rect.width - 200
+        image_rect.y = self.screen_rect.height-70
+        image_rect.x = self.screen_rect.width - 210
         self.screen.blit(logos, image_rect)
         self.music = ShepherdMusic()
         self.leaderboard = Leaderboard()
@@ -255,19 +255,21 @@ class MakerMasher():
         else:
             self.write_text_on_screen("GAME OVER!\nYOUR SCORE: {} \n  PRESS THE CENTRAL BUTTON TO START".format(self.current_score) + "\n" + self.leaderboard.get_highscore_string())
             self.leaderboard.write("na", self.current_score)
+            self.reset()
         self.music.play_gameover()
         self.gameover_show()
 
-        self.reset()
+
 
     def get_player_name(self):
-        self.write_text_on_screen("YOU MADE IT TO THE TOP 5! \n ENTER YOUR NAME!")
-        self.read_input=True
+        self.write_text_on_screen("YOU MADE IT TO THE TOP 5! \n ENTER YOUR INITIALS!")
+        self.read_input = True
 
     def finish_player_name(self):
         self.leaderboard.write(self.player_name, self.current_score)
         self.write_text_on_screen("AWESOME! \n PRESS THE CENTRAL BUTTON TO START AGAIN " + self.leaderboard.get_highscore_string())
-        self.player_name=""
+        self.player_name = ""
+        self.reset()
 
 
     def process_gpio_buttons(self):
@@ -298,6 +300,8 @@ class MakerMasher():
 
         if GPIO.input(5) and not pressed:
             print('Button 5')
+            if not self.in_game:
+                self.start_game()
             self.process_flashy_press(pygame.K_5)
 
         if GPIO.input(14) and not pressed:
