@@ -8,6 +8,7 @@ import time
 import RPi.GPIO as GPIO
 from time import sleep
 from shepherd_tone import ShepherdMusic
+from leaderboard import Leaderboard
 import pygame.midi
 
 
@@ -73,8 +74,11 @@ class MakerMasher():
     target_results=[]
     target_results_iter=None
     in_game=False
+
     correct=0
     finish_print=False
+    read_input = False
+    player_name=""
 
     def __init__(self, font, screen):
 
@@ -83,9 +87,16 @@ class MakerMasher():
         self.screen_rect=screen.get_rect()
         pygame.display.toggle_fullscreen()
         self.off_text_surface = pygame.Surface(self.screen_rect.size)
+        logos = pygame.image.load("img/kmakers.png")
+        image_rect = logos.get_rect()
+        image_rect.center= self.screen_rect.center
+        image_rect.centery=image_rect.centery+500
+        self.screen.blit(logos, image_rect)
         self.music = ShepherdMusic()
+        self.leaderboard = Leaderboard()
 
     def write_text_on_screen(self, text):
+
         self.screen.blit(self.off_text_surface, self.screen_rect)
         text_lines = text.split("\n")
         lines=0
@@ -196,9 +207,18 @@ class MakerMasher():
             if self.in_game:
                 print("no")
                 self.check_response(pygame.key.name(key))
+        elif pygame.K_a <= key <= pygame.K_z:
+            if self.read_input:
+                self.process_input_letter(pygame.key.name(key))
+        elif key == pygame.K_KP_ENTER:
+            self.finish_player_name()
         else:
             print(key)
         return
+
+    def process_input_letter(self, letter):
+        self.player_name+=letter
+        self.write_text_on_screen(self.player_name + "_")
 
     def check_response(self, key):
 
@@ -227,11 +247,25 @@ class MakerMasher():
         self.current_score=3
 
     def game_over(self):
-        self.write_text_on_screen("GAME OVER!\nYOUR SCORE: {}".format(self.current_score))
+        if self.leaderboard.is_highscore(self.current_score):
+            self.get_player_name()
+        else:
+            self.write_text_on_screen("GAME OVER!\nYOUR SCORE: {} \n  PRESS THE CENTRAL BUTTON TO START".format(self.current_score) + "\n" + self.leaderboard.get_highscore_string())
+            self.leaderboard.write("na", self.current_score)
         self.music.play_gameover()
         self.gameover_show()
 
         self.reset()
+
+    def get_player_name(self):
+        self.write_text_on_screen("YOU MADE IT TO THE TOP 5! \n ENTER YOUR NAME!")
+        self.read_input=True
+
+    def finish_player_name(self):
+        self.leaderboard.write(self.player_name, self.current_score)
+        self.write_text_on_screen("AWESOME! \n PRESS THE CENTRAL BUTTON TO START AGAIN " + self.leaderboard.get_highscore_string())
+        self.player_name=""
+
 
     def process_gpio_buttons(self):
         global pressed
