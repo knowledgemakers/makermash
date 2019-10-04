@@ -98,6 +98,7 @@ class MakerMasher():
         self.screen.blit(logos, image_rect)
         self.music = ShepherdMusic()
         self.leaderboard = Leaderboard()
+        self.reset_buttons()
 
     def write_text_on_screen(self, text):
         self.screen.blit(self.off_text_surface, self.off_rect)
@@ -119,13 +120,12 @@ class MakerMasher():
         pygame.time.set_timer(REST_TIME, 0)
         self.reset_buttons()
         self.write_text_on_screen("GET READY...")
-        sleep(0.5)
+        sleep(2)
         self.correct=0
         self.in_game = False
         self.target_results = self.generate_result_based_on_score(self.current_score)
         self.target_results_iter = iter(self.target_results)
         self.flash_button(next(self.target_results_iter))
-        now=time.time()
         self.in_game=False
         self.finish_print=False
         pygame.time.set_timer(UPDATE_NUMBER, 100)
