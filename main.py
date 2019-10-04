@@ -86,6 +86,8 @@ class MakerMasher():
         self.screen=screen
         self.screen_rect=screen.get_rect()
         pygame.display.toggle_fullscreen()
+        self.off_rect = self.screen_rect
+        self.off_rect.height=self.screen_rect.height - 500
         self.off_text_surface = pygame.Surface(self.screen_rect.size)
         logos = pygame.image.load("img/kmakers.png")
         image_rect = logos.get_rect()
@@ -96,7 +98,7 @@ class MakerMasher():
         self.leaderboard = Leaderboard()
 
     def write_text_on_screen(self, text):
-
+        print(self.screen_rect)
         self.screen.blit(self.off_text_surface, self.screen_rect)
         text_lines = text.split("\n")
         lines=0
@@ -210,7 +212,7 @@ class MakerMasher():
         elif pygame.K_a <= key <= pygame.K_z:
             if self.read_input:
                 self.process_input_letter(pygame.key.name(key))
-        elif key == pygame.K_KP_ENTER:
+        elif key == pygame.K_RETURN or key  == pygame.K_KP_ENTER:
             self.finish_player_name()
         else:
             print(key)
