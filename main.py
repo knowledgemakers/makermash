@@ -350,8 +350,8 @@ def main():
     try:
 
         clock = pygame.time.Clock()
-        pygame.display.toggle_fullscreen()
-        screen = pygame.display()
+
+        screen = pygame.display.set_mode((1280, 720), pygame.FULLSCREEN)
         font = pygame.font.Font(VISITOR_TTF_FILENAME, 50)
         masher = MakerMasher(font, screen)
 
