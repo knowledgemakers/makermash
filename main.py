@@ -79,6 +79,8 @@ class MakerMasher():
     finish_print=False
     read_input = False
     player_name=""
+    logos={}
+    image_rect={}
 
     def __init__(self, font, screen):
 
@@ -99,10 +101,19 @@ class MakerMasher():
         self.music = ShepherdMusic()
         self.leaderboard = Leaderboard()
         self.reset_buttons()
+    def set_logo(self):
+        if not self.logos:
+            self.logos = pygame.image.load("img/kmakers.png")
+            self.image_rect = self.logos.get_rect()
+            self.image_rect.y = self.screen_rect.height - 70
+            self.image_rect.x = self.screen_rect.width - 210
+        self.screen.blit(self.logos, self.image_rect)
 
     def write_text_on_screen(self, text):
         print(self.off_rect)
         print(self.off_text_surface)
+        self.screen.fill((0, 0, 0))
+        self.set_logo()
         text_lines = text.split("\n")
         lines = 0
         for line in text_lines:
