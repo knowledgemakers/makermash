@@ -305,7 +305,8 @@ class MakerMasher():
             if not self.in_game:
                 print("start game?")
                 self.start_game()
-            self.process_flashy_press(pygame.K_5)
+            else:
+                self.process_flashy_press(pygame.K_5)
 
         if GPIO.input(14) and not pressed:
             print('Button 6')
